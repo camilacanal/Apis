@@ -1,6 +1,6 @@
-/* import { MongoClient } from "mongodb";
+ import { MongoClient } from "mongodb";
 
-const connectionString = "mongodb+srv://sofiauaustral:Austral.api@programacion.xj67klh.mongodb.net/";
+const connectionString = "mongodb+srv://camicanal:Racing2003@programacion.xj67klh.mongodb.net/";
 
 const client = new MongoClient(connectionString);
 
@@ -15,4 +15,4 @@ try {
 let db = conn.db("austral");
 
 export default db;
- */
+ 

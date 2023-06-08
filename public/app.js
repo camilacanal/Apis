@@ -1,48 +1,52 @@
-apiUrl = "https://www.mockachino.com/9faa6d69-fbe9-41/personajes"
+// fetch desde el servidor (back) 
+apiUrl = "/personajes"
+
+// fetch desde el front 
+//  apiUrl = "https://www.mockachino.com/9faa6d69-fbe9-41/personajes"
 
 class App{
     constructor(){
         this.onJsonReady = this.onJsonReady.bind(this);
         this.onResponse = this.onResponse.bind(this);
-        this.loadcharacters = this.loadcharacters.bind(this);
         
         this.onClick = this.onClick.bind(this);
         const b = document.querySelector("#boton");
         b.addEventListener('click', this.onClick);
     }
 
-    onClick(event){
+    onClick(event){ 
+        fetch(apiUrl) 
+        .then(this.onResponse)
+        .then(this.onJsonReady);
         event.preventDefault();
-        const input = document.querySelector('#input');
-        const word = input.value.trim();
-            this.dictionary.doLookup(word)
-      .then(this._showResults);
-
     }
+    
     onJsonReady(json) {
+      console.log(json)
       const characterContainer = document.querySelector("#characterContainer");
       characterContainer.innerHTML = "";  
-      for(const c of json.personajes) {
-          new Characters(characterContainer, c.imagen)
-        }
+      for(const c of json.personajes) {4
+        const character = new Characters(c.descripcion)
+       characterContainer.innerHTML =  character.getImage();   
+      }
     }
    
     onResponse(response){
        return response.json();
     }
    
-    loadcharacters() {
-        fetch(apiUrl)
-        .then(this.onResponse)
-        .then(this.onJsonReady);
-    } }
+    }
  
  class Characters {
-    constructor(characterContainer, imageUrl){
-       const image = new Image();
-       image.src  - imageUrl;
-        characterContainer.append(image);
-    } }
+  image = null;
+  constructor(imageUrl){
+       this.image = new Image();
+       this.image.src  = imageUrl;  
+    } 
 
- const app = new App(); 
- app.loadcharacters();
+    getImage(){
+        return "<image src\"" + this.image.url + "/>";
+    }
+    }
+
+ const app = new App();
