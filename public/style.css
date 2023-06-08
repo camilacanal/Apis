@@ -29,7 +29,7 @@ body {
     max-width: 200px;
   }
   
-  .search-container {
+  #results{
     text-align: center;
     width: 50%; /* El ancho del contenedor */
     height: 50px; /* La altura del contenedor */

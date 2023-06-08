@@ -1,8 +1,9 @@
-// fetch desde el servidor (back) 
+
 apiUrl = "/personajes"
 
-// fetch desde el front 
-//  apiUrl = "https://www.mockachino.com/9faa6d69-fbe9-41/personajes"
+import WordSet from "./wordSet.js"; 
+import Characters from "./character.js";
+
 
 class App{
     constructor(){
@@ -12,7 +13,22 @@ class App{
         this.onClick = this.onClick.bind(this);
         const b = document.querySelector("#boton");
         b.addEventListener('click', this.onClick);
+
+        const setForm= document.querySelector('#set');
+        this._onSet = this._onSet.bind(this);
+        setForm.addEventListener('submit', this._onSet);
     }
+
+    _onSet(event) {
+        event.preventDefault();
+    
+        const resultsContainer = document.querySelector('#results');
+        const wordSet = new WordSet(resultsContainer);
+        const postBody = wordSet.read();
+    
+        this.character.save(postBody);
+    
+      }
 
     onClick(event){ 
         fetch(apiUrl) 
@@ -37,7 +53,7 @@ class App{
    
     }
  
- class Characters {
+/*  class Characters {
   image = null;
   constructor(imageUrl){
        this.image = new Image();
@@ -47,6 +63,6 @@ class App{
     getImage(){
         return "<image src\"" + this.image.url + "/>";
     }
-    }
+    } */
 
  const app = new App();

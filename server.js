@@ -1,8 +1,8 @@
 import express from 'express';
 import passport from 'passport';
-/* import db from './db.js'; */
+import db from './db.js';  
 import path from 'path';
-/* import fs from 'fs'; */
+import fs from 'fs'; 
 import Authorization from "./auth.js";
 import {fileURLToPath} from 'url';
 const _filename = fileURLToPath(import.meta.url);
@@ -38,6 +38,8 @@ class BackendandServer{
         }));
         app.get('/', this.authorization.checkAuthenticated, this._goHome);
 
+      app.post('/save/', this._doSave); 
+
     app.post("/logout", (req,res) => {
       req.logOut(err=>console.log(err));
       res.redirect("/login");
@@ -45,6 +47,14 @@ class BackendandServer{
      app.listen(3000, () => console.log('Listening on port 3000'));
     }
    
+    async _doSave(req, res) {
+    const query = { word: req.body.word};
+    const collection = db.collection("dict");
+    await collection.insertOne(query);
+    res.json({ success: true });
+  }
+
+
     async _login(req, res) {
       res.sendFile(path.join(_dirname, "public/login.html"));
      }
