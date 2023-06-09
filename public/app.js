@@ -1,12 +1,11 @@
-
-apiUrl = "/personajes"
-
-import WordSet from "./wordSet.js"; 
+import WordSet from "./wordSet.js";
 import Characters from "./character.js";
 
 
 class App{
     constructor(){
+
+        this.character = new Characters();
         this.onJsonReady = this.onJsonReady.bind(this);
         this.onResponse = this.onResponse.bind(this);
         
@@ -31,7 +30,7 @@ class App{
       }
 
     onClick(event){ 
-        fetch(apiUrl) 
+        fetch("/personajes") 
         .then(this.onResponse)
         .then(this.onJsonReady);
         event.preventDefault();
@@ -39,12 +38,12 @@ class App{
     
     onJsonReady(json) {
       console.log(json)
-      const characterContainer = document.querySelector("#characterContainer");
+     /*  const characterContainer = document.querySelector("#characterContainer");
       characterContainer.innerHTML = "";  
       for(const c of json.personajes) {4
         const character = new Characters(c.descripcion)
        characterContainer.innerHTML =  character.getImage();   
-      }
+      } */
     }
    
     onResponse(response){
@@ -53,7 +52,7 @@ class App{
    
     }
  
-/*  class Characters {
+  /* class Characters {
   image = null;
   constructor(imageUrl){
        this.image = new Image();
@@ -63,6 +62,6 @@ class App{
     getImage(){
         return "<image src\"" + this.image.url + "/>";
     }
-    } */
+    }  */
 
  const app = new App();

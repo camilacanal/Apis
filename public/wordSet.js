@@ -16,4 +16,4 @@ class WordSet{
     }
 }
 
-export default WordsSet
+export default WordSet;

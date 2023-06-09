@@ -49,7 +49,7 @@ class BackendandServer{
    
     async _doSave(req, res) {
     const query = { word: req.body.word};
-    const collection = db.collection("dict");
+    const collection = db.collection("word");
     await collection.insertOne(query);
     res.json({ success: true });
   }

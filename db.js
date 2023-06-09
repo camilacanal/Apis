@@ -11,7 +11,7 @@ try {
   console.error(e);
 }
 
-let db = conn.db("austral");
+let db = conn.db("marvel");
 
 export default db;
   
