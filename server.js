@@ -1,8 +1,7 @@
 import express from 'express';
 import passport from 'passport';
-/* import db from './db.js'; */
-import path from 'path';
-/* import fs from 'fs'; */
+import db from './db.js';  
+import path from 'path'; 
 import Authorization from "./auth.js";
 import {fileURLToPath} from 'url';
 const _filename = fileURLToPath(import.meta.url);
@@ -14,20 +13,11 @@ class BackendandServer{
         const app = express();
         app.use(express.json());
         app.use(express.static('public'));
-        app.use(express.urlencoded({ extended: false }));
+        //app.use(express.urlencoded({ extended: false }));
         this.authorization = new Authorization(app);
         
-        // fetch desde el servidor --> no funciona 
-        app.get("/personajes", (req, res)=> {
-          fetch("https://www.mockachino.com/9faa6d69-fbe9-41/personajes")
-             .then(response => response.json())
-             .then(data =>{ 
-              console.log(data);
-              res.json(data);
-            
-            })
-        });
-
+        app.get('/personajes/:personaje', this._doSearch);
+        app.post('/save/', this._doSave);
         app.get('/login/', this._login);
         app.get('/auth/google/', passport.authenticate('google', {
             scope: ['email', 'profile']
@@ -38,13 +28,30 @@ class BackendandServer{
         }));
         app.get('/', this.authorization.checkAuthenticated, this._goHome);
 
-    app.post("/logout", (req,res) => {
-      req.logOut(err=>console.log(err));
-      res.redirect("/login");
-   })
+
      app.listen(3000, () => console.log('Listening on port 3000'));
     }
    
+   async _doSave(req, res) {
+    const query = { word: req.body.word}; //no tengo acceso a la base de datos de uds, pero quizas el campo no se llame word
+    const collection = db.collection("word");
+    await collection.insertOne(query); //no tengo acceso a la base de datos de uds, pero quizas la coleccion no se llame word
+    res.json({ success: true });
+  } 
+
+   async _doSearch(req,res){
+    const routeParams = req.params;
+    const personaje = routeParams.personaje;
+    
+     return fetch("https://www.mockachino.com/3e8f3f82-d354-4c/personajes/"+personaje)
+    .then(response => response.json())
+    .then(data => {
+      res.json(data); 
+      console.log(data)
+    })
+
+}
+
     async _login(req, res) {
       res.sendFile(path.join(_dirname, "public/login.html"));
      }

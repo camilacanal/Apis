@@ -1,18 +1,16 @@
  import { MongoClient } from "mongodb";
 
-const connectionString = "mongodb+srv://camicanal:Racing2003@programacion.xj67klh.mongodb.net/";
+const connectionString = "mongodb+srv://camicanal22:Camila2003@programacion.gpqkiq6.mongodb.net/?retryWrites=true&w=majority";
 
 const client = new MongoClient(connectionString);
 
 let conn;
 try {
-  // Try
   conn = await client.connect();
 } catch(e) {
   console.error(e);
 }
 
-let db = conn.db("austral");
+let db = conn.db("marvel");
 
-export default db;
- 
+export default db; 
