@@ -1,16 +1,6 @@
 #cuerpo{
     background-color: rgb(2, 71, 114);
 }
-
-#carouselExample{
-    width: 700px;
-}
-
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
-  }
   
   .container {
     max-width: 800px;
@@ -21,7 +11,7 @@ body {
   .logo {
     text-align: center;
     position: absolute;  
-    top: 200px;
+    top: 100px;
     right: 650px;
   }
   
@@ -29,29 +19,29 @@ body {
     max-width: 200px;
   }
   
-  .search-container {
+  #results{
     text-align: center;
     width: 50%; /* El ancho del contenedor */
     height: 50px; /* La altura del contenedor */
     margin: auto; /* Centra el contenedor horizontalmente */
     text-align: center; /* Centra el contenido dentro del contenedor */
     position: absolute;  
-    top: 300px;
+    top: 200px;
     right: 350px;
-    
-
   }
   
   input[type=text] {
     width: 70%;
     padding: 12px 20px;
     margin: 8px 0;
+    margin-bottom: 500px;
     box-sizing: border-box;
     border: 2px solid #ccc;
     border-radius: 4px;
     font-size: 16px;
     background-color: white;
     border-radius: 15px;
+
   }
   
   button[type=submit] {
@@ -59,7 +49,7 @@ body {
     background-color: #c20707;
     color: white;
     padding: 14px 20px;
-    margin: 8px 0;
+    margin: 0px 0;
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -71,13 +61,47 @@ body {
     background-color: #101112;
   }
   
-  @media screen and (max-width: 600px) {
-    input[type=text] {
-      width: 100%;
-    }
-    button[type=submit] {
-      width: 100%;
-    }
+
+  #characterContainer{
+position: relative;
+    top: 500px;
+    left: 550px;
   }
 
+#reviewcharacter{
+ color: azure;
+}
+
+#review-inputValue{
+  background-color: azure;
+  border-radius: 10px;
+  padding: 14px 50px;
+}
+
+.button{
+  width: 20%;
+  background-color: #c20707;
+  color: white;
+  padding: 10px 8px;
+  margin: 0px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 15px;
+}
+
+#mostrar{
+  position: absolute;
+  top: 300px;
+  left: 200px;
+  right: 100px;
+  padding: 10px 8px;
+  color: azure;
+
+}
+
+#img {
+  width: 200px; 
+}
  

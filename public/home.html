@@ -17,14 +17,29 @@
           <img src="Imagenes/logoMarvel.png" alt="Marvel">
         </div>
         <br>
-        <div class="search-container" class="position-absolute top-50 start-50">
-          <form action="#" method="get">
-            <input id="input" type="text" placeholder="Buscar en el Mundo Marvel...">
-            <button id="boton" type="submit">Buscar</button>
+        <div id="results">
+          <form id="set" action="#" method="get">
+            <input id="set-word-input" type="text" placeholder="Buscar en el Mundo Marvel...">
+            <button id="boton" type="submit" value="buscar">Buscar</button>
+            <p id="status"> </p> 
           </form>
         </div>
       </div>
-      <div  id="characterContainer"></div>
-     <script src="app.js"></script>
+      <div id="mostrar"> 
+        <h1 class="name"></h1>
+        <p class="description"></p>
+        <p class="aparicion"></p>
+        <p class="primera-aparicion"></p>
+        <img src="" id="img">
+        <div id="image-container"></div>
+      </div>
+      <div id="characterContainer">
+        <form id="save">
+          <p id="reviewcharacter">Contanos cual es tu personaje favorito!</p>
+          <textarea type="text" id="review-inputValue"></textarea><br/>
+          <input class="button" type="submit" value="Enviar"/>
+      </form>
+      </div>
+     <script type="module" src="app.js"></script>
 </body>
 </html>
