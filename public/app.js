@@ -25,6 +25,10 @@ class App{
          .then(response => response.json())
          .then(data => {
             console.log(data);
+
+            if (JSON.stringify(data).includes("not found"))
+            this.charactername.innerHTML = 'Personaje inexistente';
+            else {
             const nameValue = data.name;
             const descValue = data.description;
             const aparValue = data.apariciones;
@@ -35,6 +39,7 @@ class App{
             this.description.innerHTML = "Descripción: " + descValue; 
             this.aparicion.innerHTML = "Principles apariciones: " + aparValue; 
             this.img.src = imgValue; 
+          }
         })
 
       

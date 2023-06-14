@@ -1,0 +1,61 @@
+openapi: 3.0.0
+info:
+  title: Backend API
+  description: API documentation for the backend server
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000
+paths:
+  /personajes/{personaje}:
+    get:
+      summary: Retrieve a character by ID
+      parameters:
+        - in: path
+          name: personaje
+          schema:
+            type: string
+          required: true
+          description: The ID of the character to retrieve
+      responses:
+        '200':
+          description: Successful response
+  /save/:
+    post:
+      summary: Save a word
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                word:
+                  type: string
+              required:
+                - word
+      responses:
+        '200':
+          description: Successful response
+  /login/:
+    get:
+      summary: Login page
+      responses:
+        '200':
+          description: Successful response
+  /auth/google/:
+    get:
+      summary: Authenticate with Google
+      responses:
+        '200':
+          description: Successful response
+  /auth/google/callback:
+    get:
+      summary: Google authentication callback
+      responses:
+        '200':
+          description: Successful response
+  '/':
+    get:
+      summary: Home page
+      responses:
+        '200':
+          description: Successful response
