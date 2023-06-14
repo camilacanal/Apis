@@ -27,7 +27,7 @@ class App{
             console.log(data);
 
             if (JSON.stringify(data).includes("not found"))
-            this.charactername.innerHTML = 'Personaje inexistente';
+            this.charactername.innerHTML = 'Personaje inexistente :( ) ';
             else {
             const nameValue = data.name;
             const descValue = data.description;
