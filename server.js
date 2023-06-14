@@ -33,9 +33,9 @@ class BackendandServer{
     }
    
    async _doSave(req, res) {
-    const query = { word: req.body.word}; //no tengo acceso a la base de datos de uds, pero quizas el campo no se llame word
+    const query = { word: req.body.word}; 
     const collection = db.collection("word");
-    await collection.insertOne(query); //no tengo acceso a la base de datos de uds, pero quizas la coleccion no se llame word
+    await collection.insertOne(query); 
     res.json({ success: true });
   } 
 

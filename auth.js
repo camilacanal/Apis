@@ -13,7 +13,7 @@ class Authorization {
             saveUninitialized: true,
         }));
 
-        app.use(passport.initialize()); // init passport on every route call
+        app.use(passport.initialize()); 
         app.use(passport.session());
 
         passport.use(new GoogleStrategy({ // google strategy en vez de local strategy 
